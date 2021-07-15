@@ -29,53 +29,57 @@ yargs.version("1.1.0");
 
 //create add command
 yargs.command({ //yargs take 4 options- command ,description, builder and handler
-    command:'add' , //to check for the command entered by the user
-    describe:'Add a new note' , //will provide a description to the user
-    builder:{ //builer will contain the elements of the note
+    command: 'add', //to check for the command entered by the user
+    describe: 'Add a new note', //will provide a description to the user
+    builder: { //builer will contain the elements of the note
         //essentially it contains the elements which build up the note
-        title:{
-            describe:'Note Title' ,
+        title: {
+            describe: 'Note Title',
             demandOption: true,
-            type:'string'
-        } ,
-        body:{
-            describe:'Note Body' ,
-            demandOption:true,
-            type:'string'
+            type: 'string'
+        },
+        body: {
+            describe: 'Note Body',
+            demandOption: true,
+            type: 'string'
         }
     },
-    handler: function(argv) //this will be the function which will be carried out after a note is added
+    handler: function (argv) //this will be the function which will be carried out after a note is added
     {
-        notes.addnote(argv.title,argv.body);
+        notes.addnote(argv.title, argv.body);
     }
 });
 
 //create remove command
 yargs.command({
-    command:'remove',
-    describe:'Remove a note' ,
-    handler: function()
-    {
-        console.log("Removing the note!!");
+    command: 'remove',
+    describe: 'Remove a note',
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
+        notes.removeNote(argv.title);
     }
 });
 
 //create list command
 yargs.command({
-    command:'list',
-    describe:'List the notes',
-    handler:function()
-    {
+    command: 'list',
+    describe: 'List the notes',
+    handler: function () {
         console.log("List down the notes");
     }
 });
 
 //create read command
 yargs.command({
-    command:'read',
-    describe:'Read a  note',
-    handler:function()
-    {
+    command: 'read',
+    describe: 'Read a  note',
+    handler: function () {
         console.log("Read a note");
     }
 });
