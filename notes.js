@@ -1,3 +1,4 @@
+//this file will be exported
 // console.log("notes is exported");
 // const obj={
 //     getnotes:function () {aaaaa
