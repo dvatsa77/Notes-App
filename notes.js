@@ -1,6 +1,6 @@
 // console.log("notes is exported");
 // const obj={
-//     getnotes:function () {
+//     getnotes:function () {aaaaa
 //     return "Your Notes....";
 // },
 //     printnotes:function()
@@ -49,9 +49,22 @@ const removeNote = (title) => {
 const listNotes = () => {
     const notes = loadnotes();
     console.log(chalk.green.inverse("Your notes-"));
-    notes.forEach((note) =>{
+    notes.forEach((note) => {
         console.log(note.title);
     })
+}
+
+const readNote = (title) => {
+    const notes = loadnotes()
+    const rnote = notes.find((note) => {
+        return note.title === title
+    })
+    if (rnote === undefined)
+        console.log(chalk.red.inverse("No note found with this title"));
+    else {
+        console.log(chalk.green.inverse(rnote.title));
+        console.log(chalk.inverse(rnote.body));
+    }
 }
 
 const saveNotes = (notes) => {
@@ -74,5 +87,6 @@ module.exports = {
     getnotes: getnotes,
     addnote: addnote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 };
